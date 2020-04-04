@@ -1,0 +1,53 @@
+<html>
+<head>
+<?php echo "<title>Encript Code</title>"; 
+include "komponen/sys.php";?>
+</head>
+<?php
+$ejs_tglkadaluarsa="31-10-2015"; //Tanggal Kadaluarsa
+$ejs_sekarang=date('Ymd');
+ 
+list($ejs_tgl,$ejs_bln,$ejs_thn) = explode('-',$ejs_tglkadaluarsa);
+$ejs_kadaluarsa=$ejs_thn.$ejs_bln.$ejs_tgl; 
+if($ejs_sekarang<=$ejs_kadaluarsa){
+if(!empty($_POST['ejs_bahasa'])){
+    $ejs_ambil=$_POST['ejs_bahasa'];
+
+	$ejs_siap=$ejs_ambil;
+echo '<div class="units-row"><div class="unit-100"><form method="post" action=""><textarea name="ejs_hasil" rows="30" class="my-code-area" style="width: 100%"><?php
+';
+
+$ejs_compressed=base64_encode(gzdeflate(gzencode(gzdeflate(base64_encode($ejs_siap),9),9),9));
+?>
+$ejs_run_time=array("cr"."ea"."te"."_f"."un"."ct"."io"."n", "ex"."pl"."o"."de");$ejs_dec_in=$ejs_run_time[0]('$ejs_code','ev'.'al'.'("?>".ba'.'se'.'64'.'_de'.'co'.'de(gz'.'in'.'fla'.'te(gz'.'de'.'co'.'de(gz'.'in'.'fla'.'te(ba'.'se'.'64'.'_de'.'co'.'de($ejs_code))))));');
+$ejs_run_dome="<?php
+echo base64_encode($ejs_sekarang)."-";
+echo "$ejs_compressed";
+echo "-".base64_encode($ejs_kadaluarsa);?>";list($ejs_gws,$ejs_eco,$ejs_kdl) = $ejs_run_time[1]('-',$ejs_run_dome); $ejs_dec_in($ejs_eco);
+</textarea></form>
+</div></div>
+<?php }else{ ?>
+<div class="terbng">
+<form method="POST">
+<center></center>
+<textarea name="ejs_bahasa" rows="30" class="my-code-area" style="width: 100%" ></textarea><br>
+<center>
+<button type="submit" class="btn btn-green" name="ejs_oke">Encode</button>
+</center>
+</form>
+</div>
+<?php
+}
+}else{?>
+<center>
+<br>
+	Silahkan Perpanjang <b>Aplikasi Encript Code by Excel Jemmy Saputra </b>!<br>Twitter :
+	<a href="https://twitter.com/exceljesap">@exceljesap</a>
+</center>
+<?php
+}
+?>
+<script>
+  $('.my-code-area').ace({ theme: 'chrome', lang: 'php' })
+</script>
+</html>
